@@ -7,7 +7,8 @@ class App extends Component {
   state = {
     user: null,
     showRegister: false,
-    message: null
+    message: null,
+    fetchedDataMessage: null
   };
 
   getMessage = error => error.response
@@ -52,8 +53,17 @@ class App extends Component {
     });
   };
 
+  fetchData = () => {
+    this.setState({ fetchedDataMessage: null });
+    axios.get('/secure-data').then(response => {
+      this.setState({ fetchedDataMessage: 'Result: ' + JSON.stringify(response.data, null, 2 )});
+    }).catch(error => {
+      this.setState({ fetchedDataMessage: 'Something went wrong: ' + this.getMessage(error) });
+    })
+  };
+
   render() {
-    const { user, showRegister, message } = this.state;
+    const { user, showRegister, message, fetchedDataMessage } = this.state;
     const userData = JSON.stringify(user, null, 2);
     const inputFields = <div>
       Username: <input ref="username" />
@@ -66,7 +76,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Auth-bcrypt</h1>
         </header>
         <div className="App-intro">
           {!user && <div>
@@ -92,6 +102,10 @@ class App extends Component {
             <div>{ userData }</div>
             <button onClick={this.logout}>Log out</button>
           </div>}
+          <div className="data-fetch">
+            <button onClick={this.fetchData}>Fetch data</button>
+            <div>{fetchedDataMessage}</div>
+          </div>
         </div>
       </div>
     );
