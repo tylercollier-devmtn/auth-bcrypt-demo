@@ -1,4 +1,4 @@
-# Auth-bcrypt
+# Auth-bcrypt-demo
 
 Shows off simple (but legit) auth using bcrypt.
 
