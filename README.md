@@ -44,7 +44,6 @@ app.post('/register', (req, res) => {
     req.session.user = { username };
     res.json({ username });
   }).catch(error => {
-    console.log('error', error);
     if (error.message.match(/duplicate key/)) {
       res.status(409).json({ message: "That user already exists" });
     } else {
