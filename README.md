@@ -11,6 +11,10 @@ At first, we'll allow users to log in with a username and password, and store th
 * `Fork` and `clone` this repository.
 * `cd` into the project directory.
 * Run `yarn`. You know to use yarn instead of npm because there is a `yarn.lock` file.
+* WINDOWS USERS do these steps before installing `bcrypt`:
+   * Open Powershell or Command Prompt (Right-click: Run as Administrator)
+   * Run `npm install --global --production windows-build-tools` (this may take some time)
+* Run `yarn add bcrypt`
 * Create a Postgres database. Use this project's `db/init.sql` file to create the schema.
 * Copy the `env.example` file to a new file called `.env` and paste in the connection string to the postgres database.
 * Start the server with `nodemon`.
