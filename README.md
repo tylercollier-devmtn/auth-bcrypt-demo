@@ -135,6 +135,9 @@ In this step, we'll utilize bcrypt during user registration.
 
 * Delete all records from the user table.
     * The stored passwords will no longer work because they aren't hashed.
+* WINDOWS USERS do these steps before installing `bcrypt`:
+   * Open Powershell or Command Prompt (Right-click: Run as Administrator)
+   * Run `npm install --global --production windows-build-tools` (this may take some time)
 * Use yarn to install the bcrypt library.
 * Open the `server/index.js` file.
 * At the top, require the `bcrypt` library into a variable called `bcrypt`.
